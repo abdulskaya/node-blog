@@ -4,13 +4,14 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "server": "node app.js"
+    "dev": "nodemon app.js"
   },
   "author": "Abdulsamet Kaya",
   "license": "MIT",
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.17.3",
+    "express-ejs-layouts": "^2.5.1",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.15",

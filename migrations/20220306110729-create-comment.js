@@ -12,10 +12,18 @@ module.exports = {
         type: Sequelize.STRING
       },
       post_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'posts',
+          key: 'id',
+        },
       },
       author_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'users',
+          key: 'id',
+        },
       },
       is_active: {
         type: Sequelize.BOOLEAN
