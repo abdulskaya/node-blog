@@ -8,6 +8,7 @@ app.set('view engine', 'ejs');
 //app.set('views','views')
 app.use(express.static('public'));
 app.use(expressLayout);
+app.set('views',path.resolve(__dirname,'./views'))
 // Routes
 app.use('/', require('./routes/routes'));
 app.set('layout', path.resolve(__dirname, 'views/front/layout'))
