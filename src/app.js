@@ -5,16 +5,21 @@ const expressLayout = require('express-ejs-layouts');
 const env = require('dotenv').config();
 const db = require('./config/db');
 
-
-// Set template engine configs
 app.set('view engine', 'ejs');
+
 //app.set('views','views')
-app.use(express.static('public'));
+
+app.use(express.static('public')); 
+
 app.use(expressLayout);
+
+app.use(express.urlencoded({extended: true}))
+
 app.set('views',path.resolve(__dirname,'./views'))
+
 // Routes
-app.use('/', require('./routes/routes'));
 app.set('layout', path.resolve(__dirname, 'views/front/layout'))
+app.use(require('./routes/routes'));
 
 app.get('/test', (req, res) => {
     res.render('front/index',{

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600;1,700;1,900&display=swap");
 body {
   font: normal normal 14px/1.2 "Helvetica Neue", Arial, sans-serif;
 }
@@ -16,7 +17,7 @@ div {
 
 /* global styles START */
 .btn {
-  padding: 4px 12px;
+  padding: 6px 12px;
   min-width: 88px;
   border: none;
   font: inherit;
@@ -26,12 +27,11 @@ div {
   text-decoration: none;
   cursor: default;
   font-weight: 400;
-  background: #fff;
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3), 0px 1px 1px rgba(0, 0, 0, 0.4);
-  transition: 0s !important;
+  transition: 0.25s;
 }
-.btn:active {
-  background: linear-gradient(#4faefc, #006bff);
+.btn:active, .btn:hover {
+  background: #ff665b;
   color: #fff;
   position: relative;
 }
@@ -239,5 +239,74 @@ div {
 }
 
 /* home page styles END*/
+.section {
+  width: 100%;
+}
+
+._inner {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input {
+  margin-bottom: 20px;
+  height: 40px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 5px #00000005;
+  border: 1px solid #bfbfbf;
+  padding: 9px;
+  font-family: "SF Text", "Inter", sans-serif;
+  font-weight: 100;
+  transition: 0.24s;
+}
+input:focus, input:active {
+  outline: 0;
+  border: 1px solid #909090;
+}
+
+textarea {
+  margin-bottom: 20px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 5px #00000005;
+  border: 1px solid #bfbfbf;
+  padding: 9px;
+  font-family: "SF Text", "Inter", sans-serif;
+  font-weight: 100;
+}
+textarea:focus, textarea:active {
+  outline: 0;
+  border: 1px solid #909090;
+}
+
+.page-title {
+  background: #1d1d1f;
+  border-top: 1px solid #353535;
+  width: 100%;
+  box-shadow: 0px 6px 6px #0000002b;
+}
+.page-title h1 {
+  font-family: "Source Sans Pro", sans-serif;
+  background: radial-gradient(#cdcdcd, #000);
+  font-size: 79px;
+  text-align: center;
+  font-weight: 900;
+  background: radial-gradient(#eff1ff, #000);
+  background-size: 100% 200%;
+  background-position: 50% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-bottom: 12px;
+}
+
+small {
+  font-size: 11px;
+}
+
+a {
+  transition: 0.25s;
+  color: #494949;
+}
 
 /*# sourceMappingURL=style.css.map */
