@@ -1,5 +1,5 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
-const sequelize = new Sequelize('sqlite::memory:');
+const sequelize = require('../config/db');
 
 class User extends Model {
   static associate(models) {
@@ -31,7 +31,6 @@ User.init({
   modelName: 'User' // choose the model name
 });
 
-// the defined model is the class itself
-console.log(User === sequelize.models.User); // true
 
+module.exports = User
 

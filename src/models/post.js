@@ -1,5 +1,5 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
-const sequelize = new Sequelize('sqlite::memory:');
+const sequelize = require('../config/db');
 
 class Post extends Model {}
 User.init({
@@ -31,7 +31,5 @@ User.init({
   modelName: 'Post' // choose the model name
 });
 
-// the defined model is the class itself
-console.log(User === sequelize.models.Post); // true
-
+module.exports = Post
 

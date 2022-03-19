@@ -1,5 +1,5 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
-const sequelize = new Sequelize('sqlite::memory:');
+const sequelize = require('../config/db');
 
 class Category extends Model {}
 User.init({
@@ -15,7 +15,4 @@ User.init({
   modelName: 'Category' // choose the model name
 });
 
-// the defined model is the class itself
-console.log(User === sequelize.models.Category); // true
-
-
+module.exports = Category
