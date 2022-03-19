@@ -39,8 +39,8 @@ db.Sequelize = Sequelize;
 // Posts
 db.post.belongsTo(db.user);
 
-// Users
-db.user.hasMany(db.post);
+// Users.post
+db.user.hasMany(db);
 
 
 module.exports = db;

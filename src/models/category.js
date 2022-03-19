@@ -1,24 +1,21 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class category extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
+const { Sequelize, DataTypes, Model } = require('sequelize');
+const sequelize = new Sequelize('sqlite::memory:');
+
+class Category extends Model {}
+User.init({
+  title: {
+    type: Sequelize.STRING
+  },
+  is_active: {
+    type: Sequelize.BOOLEAN
   }
-  category.init({
-    title: DataTypes.STRING,
-    is_active: DataTypes.BOOLEAN
-  }, {
-    sequelize,
-    modelName: 'category',
-  });
-  return category;
-};
+}, {
+  // Other model options 
+  sequelize, // pass the connection instance
+  modelName: 'Category' // choose the model name
+});
+
+// the defined model is the class itself
+console.log(User === sequelize.models.Category); // true
+
+

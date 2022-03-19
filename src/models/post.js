@@ -1,28 +1,37 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class Post extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
+const { Sequelize, DataTypes, Model } = require('sequelize');
+const sequelize = new Sequelize('sqlite::memory:');
+
+class Post extends Model {}
+User.init({
+  title: {
+    type: Sequelize.STRING
+  },
+  content: {
+    type: Sequelize.TEXT
+  },
+  post_face: {
+    type: Sequelize.STRING
+  },
+  category_id: {
+    type: Sequelize.INTEGER
+  },
+  author_id: {
+    type: Sequelize.INTEGER,
+    references: {
+      model: 'users',
+      key: 'id',
+    },
+  },
+  is_active: {
+    type: Sequelize.BOOLEAN,
   }
-  Post.init({
-    title: DataTypes.STRING,
-    content: DataTypes.TEXT,
-    post_face: DataTypes.STRING,
-    category_id: DataTypes.INTEGER,
-    author_id: DataTypes.INTEGER,
-    is_active: DataTypes.BOOLEAN
-  }, {
-    sequelize,
-    modelName: 'Post',
-  });
-  return Post;
-};
+}, {
+  // Other model options 
+  sequelize, // pass the connection instance
+  modelName: 'Post' // choose the model name
+});
+
+// the defined model is the class itself
+console.log(User === sequelize.models.Post); // true
+
+

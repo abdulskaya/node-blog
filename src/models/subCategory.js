@@ -1,12 +1,9 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
 
-class User extends Model {
-  static associate(models) {
-    // define association here
-  }
-}
-User.init({
+class SubCatogory extends Model {}
+
+SubCatogory.init({
   email: {
     type: Sequelize.STRING
   },
@@ -28,10 +25,9 @@ User.init({
 }, {
   // Other model options 
   sequelize, // pass the connection instance
-  modelName: 'User' // choose the model name
+  modelName: 'SubCatogory' // choose the model name
 });
 
 // the defined model is the class itself
-console.log(User === sequelize.models.User); // true
-
+console.log(User === sequelize.models.SubCatogory); // true
 
