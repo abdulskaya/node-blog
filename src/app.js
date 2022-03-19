@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const expressLayout = require('express-ejs-layouts');
+const env = require('dotenv').config();
+const db = require('./config/db');
+
 
 // Set template engine configs
 app.set('view engine', 'ejs');

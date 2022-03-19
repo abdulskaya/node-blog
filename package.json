@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon app.js"
+    "dev": "nodemon ./src/app.js"
   },
   "author": "Abdulsamet Kaya",
   "license": "MIT",
