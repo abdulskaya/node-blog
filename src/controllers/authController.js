@@ -1,4 +1,4 @@
-const { validationResult, ValidationChain } = require('express-validator');
+const { validationResult } = require('express-validator');
 
 
 const register = (req, res) => {
@@ -14,6 +14,7 @@ const register_post = (req, res, next) => {
         req.flash('olds',olds);
         res.redirect('/register')
     }
+    res.redirect('/')
     
 }
 

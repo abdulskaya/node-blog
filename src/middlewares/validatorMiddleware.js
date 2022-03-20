@@ -3,10 +3,12 @@ const User = require('../models/user');
 
 const register_schema = {
     fullname: {
+        trim: true,
         notEmpty: true,
         errorMessage: "İsim alanı gerekli",
     },
     username: {
+        trim: true,
         custom: {
             options: async (value) => {
                 if(value == '')  return Promise.reject('Kullanıcı adı alanı gerekli')
@@ -19,28 +21,34 @@ const register_schema = {
                     if (user.length > 0) {
                         return Promise.reject('Kullanıcı adı zaten kayıtlı')
                     }
+                    return true
                 })
               }
         },
     },
     password: {
+        trim: true,
         custom: {
             options: (value) => {
                 if(value == '')  return Promise.reject('Şifre alanı gerekli')
-                if(value.length < 8)  return Promise.reject('Şifre 8 karakterden küçük olamaz')
+                else if(value.length < 8)  return Promise.reject('Şifre 8 karakterden küçük olamaz')
+                return true
             }
         }
     },
     password_verification: {
+        trim: true,
         custom: {
             options: (value, { req }) => {
                 if(value == '')  return Promise.reject('Şifre onaylama alanı gerekli')
-                if(req.body.password != value)  return Promise.reject('Şifreler uyuşmuyor')
+                else if(req.body.password != value)  return Promise.reject('Şifreler uyuşmuyor')
+                else return true
             }
         }
         
     },
     email_adress: {
+        trim: true,
         normalizeEmail: true,
         notEmpty: true,
         errorMessage: "Email alanı gerekli",
@@ -51,14 +59,14 @@ const register_schema = {
                         email_adress: value
                     }
                 }).then(user => {
-
                     if (user.length > 0 && value != '@') {
                         return Promise.reject('E-Mail zaten kayıtlı')
-                    }
+                    }else return true
                 })
             }
         }
     }
+    
 }
 
 module.exports = {
