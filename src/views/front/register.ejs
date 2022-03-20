@@ -8,10 +8,15 @@
 <div class="section">
     <div class="section-inner _inner">
         <form method="post" action="/register-post" style="width: 450px;" class="d-flex flex-column mx-auto mt-5">
-            <input placeholder="Adınız*" type="text" name="name">
-            <input type="email" placeholder="E-Mail adresiniz*" name="email">
+            <% if (locals.validation_errors != undefined && validation_errors.length > 0 ) { %>
+                <%- include('../partials/alert_danger') %>
+            <% } %>
+         
+            <input placeholder="Adınız*" type="text" name="fullname" value="<%- typeof olds[0] != 'undefined' ?  olds[0].fullname :  '' %>"  >
+            <input placeholder="Kullanıcı adınız*" type="text" name="username" value="<%- typeof olds[0] != 'undefined' ?  olds[0].username :  '' %>"  >
+            <input type="email" placeholder="E-Mail adresiniz*" name="email_adress" value="<%- typeof olds[0] != 'undefined' ?  olds[0].email_adress : '' %>">
             <input type="password" placeholder="Şifreniz*" name="password">
-            <input type="password" placeholder="Şifrenizi onaylayın*" name="password_verify">
+            <input type="password" placeholder="Şifrenizi onaylayın*" name="password_verification">
             <button class="btn" type="submit">Kayıt Ol</button>
         </form>
     </div>

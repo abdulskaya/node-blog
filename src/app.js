@@ -4,6 +4,26 @@ const path = require('path');
 const expressLayout = require('express-ejs-layouts');
 const env = require('dotenv').config();
 const db = require('./config/db');
+const session = require('express-session');
+const flash = require('connect-flash');
+
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 10000
+    }
+}));
+
+app.use(flash());
+
+app.use( function (req, res, next) {
+    res.locals.validation_errors =  req.flash('validation_errors');
+    res.locals.olds =  req.flash('olds'); 
+    next();
+});
+
 
 app.set('view engine', 'ejs');
 
@@ -13,25 +33,14 @@ app.use(express.static('public'));
 
 app.use(expressLayout);
 
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({extended: true}));
 
-app.set('views',path.resolve(__dirname,'./views'))
+app.set('views',path.resolve(__dirname,'./views'));
 
 // Routes
-app.set('layout', path.resolve(__dirname, 'views/front/layout'))
+app.set('layout', path.resolve(__dirname, 'views/front/layout'));
+
 app.use(require('./routes/routes'));
 
-app.get('/test', (req, res) => {
-    res.render('front/index',{
-       //layout: './front/layout/index.ejs'
-    })
-})
-
-app.get('/test2', (req, res) => {
-    res.render('front/footer',{
-       //layout: './front/layout/index.ejs'
-    })
-})
-
-const PORT = 3000;
-app.listen(PORT, console.log("Server has started at port " + PORT))
+const PORT = process.env.SERVER_PORT || 3000;
+app.listen(PORT, console.log("Server has started at port " + PORT));

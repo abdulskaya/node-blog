@@ -1,21 +1,30 @@
+const { validationResult, ValidationChain } = require('express-validator');
 
-//login page
 
 const register = (req, res) => {
     res.render('front/register');
 }
 
-const register_post = (req, res) => {
-    console.log(req.body);
-    res.send('success');
+const register_post = (req, res, next) => {
+    //res.json(req.body)
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        req.flash('validation_errors', errors.array())
+        let olds = {"fullname" : req.body.fullname, "email_adress": req.body.email_adress,  "username": req.body.username};
+        req.flash('olds',olds);
+        res.redirect('/register')
+    }
+    
 }
 
 const login = (req, res) => {
+    
+    
     res.render('front/login');
 }
 
 const login_post = (req, res) => {
-
+    
 }
 
 const password_reset = (req, res) => {
@@ -23,7 +32,7 @@ const password_reset = (req, res) => {
 }
 
 const password_reset_post = (req, res) => {
-
+    
 }
 
 module.exports = {

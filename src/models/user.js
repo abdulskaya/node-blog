@@ -7,13 +7,13 @@ class User extends Model {
   }
 }
 User.init({
-  email: {
+  email_adress: {
     type: Sequelize.STRING
   },
   username: {
     type: Sequelize.STRING
   },
-  name: {
+  fullname: {
     type: Sequelize.STRING
   },
   role: {

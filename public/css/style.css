@@ -309,4 +309,17 @@ a {
   color: #494949;
 }
 
+.response-area {
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 12px;
+  box-shadow: 1px 1px 5px #00000026;
+}
+
+.danger {
+  background: #ff5d5d;
+  color: #851d1d;
+  border: 1px solid #ff3030;
+}
+
 /*# sourceMappingURL=style.css.map */
