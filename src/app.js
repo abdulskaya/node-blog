@@ -7,15 +7,11 @@ const db = require('./config/db');
 const db_config = require('./config/config.json')
 const session = require('express-session');
 const flash = require('connect-flash');
+var SequelizeStore = require("connect-session-sequelize")(session.Store);
 
-const MySQLStore = require('express-mysql-session')(session);
-
-var sessionStore = new MySQLStore({host: db_config.development.host,
-	port: process.env.MYSQL_CONNECTION_STRING,
-	user: db_config.development.username,
-	password: db_config.development.password,
-	database: db_config.development.database}
-);
+var seqStore = new SequelizeStore({
+    db: db,
+});
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -24,9 +20,11 @@ app.use(session({
     cookie: {
         maxAge: 10000
     },
-    store: sessionStore,
+    store: seqStore,
     proxy: false, //set true if you do SSL outside of node .
 }));
+
+seqStore.sync();
 
 app.use(flash());
 
