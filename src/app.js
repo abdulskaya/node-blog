@@ -4,8 +4,18 @@ const path = require('path');
 const expressLayout = require('express-ejs-layouts');
 const env = require('dotenv').config();
 const db = require('./config/db');
+const db_config = require('./config/config.json')
 const session = require('express-session');
 const flash = require('connect-flash');
+
+const MySQLStore = require('express-mysql-session')(session);
+
+var sessionStore = new MySQLStore({host: db_config.development.host,
+	port: process.env.MYSQL_CONNECTION_STRING,
+	user: db_config.development.username,
+	password: db_config.development.password,
+	database: db_config.development.database}
+);
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -13,7 +23,9 @@ app.use(session({
     saveUninitialized: true,
     cookie: {
         maxAge: 10000
-    }
+    },
+    store: sessionStore,
+    proxy: false, //set true if you do SSL outside of node .
 }));
 
 app.use(flash());

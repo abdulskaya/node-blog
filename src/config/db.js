@@ -8,6 +8,8 @@ const connection = new Sequelize(db_config.development.database, db_config.devel
   logging : false
 });
 
+connection.query('CREATE TABLE IF NOT EXISTS `sessions` ( `session_id` varchar(128) COLLATE utf8mb4_bin NOT NULL,`expires` int(11) unsigned NOT NULL,`data` mediumtext COLLATE utf8mb4_bin,PRIMARY KEY (`session_id`)) ENGINE=InnoDB')
+
 if (connection.authenticate()) {
   console.log('Db connected successfully');
 }else {
