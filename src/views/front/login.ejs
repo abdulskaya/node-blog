@@ -7,7 +7,14 @@
 
 <div class="section">
     <div class="section-inner _inner">
-        <form method="post" action="/register-post" style="width: 450px;" class="d-flex flex-column mx-auto mt-5">
+        <form method="post" action="/login-post" style="width: 450px;" class="d-flex flex-column mx-auto mt-5">
+            <% if (locals.success != '') { %>
+                <div class="response-area success text-center">
+                    <div class="response">
+                        <%- success %>
+                     </div>
+                </div>
+            <% } %>
             <input type="email" placeholder="E-Mail adresiniz*" name="email">
             <input type="password" placeholder="Şifreniz*" name="password">
             <div class="d-flex justify-content-between mb-3">

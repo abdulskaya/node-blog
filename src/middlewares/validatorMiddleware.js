@@ -47,7 +47,7 @@ const register_schema = {
         }
         
     },
-    email_adress: {
+    email: {
         trim: true,
         normalizeEmail: true,
         notEmpty: true,
@@ -56,7 +56,7 @@ const register_schema = {
             options: async (value) => {
                 return await User.findAll({
                     where: { 
-                        email_adress: value
+                        email: value
                     }
                 }).then(user => {
                     if (user.length > 0 && value != '@') {

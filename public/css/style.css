@@ -322,4 +322,10 @@ a {
   border: 1px solid #ff3030;
 }
 
+.success {
+  background: #78ef8c;
+  color: #269412;
+  border: 1px solid #30ff41;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -2,9 +2,11 @@
 
 // index page
 const home = async (req, res) => {
-    res.render('front/home',{
+    res.json({ user: req.user})
+
+    // res.render('front/home',{
         
-    });
+    // });
 }
 
 module.exports =  {

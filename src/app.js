@@ -7,9 +7,11 @@ const db = require('./config/db');
 const db_config = require('./config/config.json')
 const session = require('express-session');
 const flash = require('connect-flash');
-var SequelizeStore = require("connect-session-sequelize")(session.Store);
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const passport = require('passport')
 
-var seqStore = new SequelizeStore({
+
+const seqStore = new SequelizeStore({
     db: db,
 });
 
@@ -31,9 +33,12 @@ app.use(flash());
 app.use( function (req, res, next) {
     res.locals.validation_errors =  req.flash('validation_errors');
     res.locals.olds =  req.flash('olds'); 
+    res.locals.success =  req.flash('success'); 
     next();
 });
 
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.set('view engine', 'ejs');
 
