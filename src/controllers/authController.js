@@ -20,7 +20,6 @@ const register_post = async (req, res, next) => {
         req.flash('success','Kayıt başarılı, lütfen giriş yapınız.')
         res.redirect('/login')
     }
-    
 }
 
 const login = (req, res) => {
@@ -30,11 +29,14 @@ const login = (req, res) => {
 }
 
 const login_post = (req, res, next) => {
+    req.flash('olds', {email: req.body.email});
     passport.authenticate('local', {
         successRedirect: '/',
         failureRedirect: '/login',
-        failureFlash: true
+        badRequestMessage: 'Lütfen gerekli alanları doldurunuz',
+        failureFlash: true,
     })(req, res, next);
+    
 }
 
 const password_reset = (req, res) => {
@@ -45,11 +47,20 @@ const password_reset_post = (req, res) => {
     
 }
 
+const logout = (req, res, next) => {
+    req.logout();
+    req.session.destroy((erroy) => {
+        res.clearCookie('connect.sid');
+        res.redirect('/login');
+    })
+}
+
 module.exports = {
     register,
     register_post,
     login,
     login_post,
     password_reset,
-    password_reset_post
+    password_reset_post,
+    logout
 }

@@ -2,11 +2,9 @@
 
 // index page
 const home = async (req, res) => {
-    res.json({ user: req.user})
-
-    // res.render('front/home',{
-        
-    // });
+    res.render('front/home',{
+        user: req.user , isAuth: req.isAuthenticated()
+    });
 }
 
 module.exports =  {

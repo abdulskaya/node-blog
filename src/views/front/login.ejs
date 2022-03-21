@@ -15,11 +15,16 @@
                      </div>
                 </div>
             <% } %>
-            <input type="email" placeholder="E-Mail adresiniz*" name="email">
+            <% if (locals.error != '') { %>
+                <div class="response-area danger text-center">
+                    <div class="response"><%- error %> </div>
+                </div>
+            <% } %>
+            <input type="email" placeholder="E-Mail adresiniz*" name="email" value="<%- typeof olds[0] != 'undefined' ? olds[0].email : ''%> ">
             <input type="password" placeholder="Şifreniz*" name="password">
             <div class="d-flex justify-content-between mb-3">
                 <small><a href="/password-reset">Şifrenizi mi unuttunuz?</a></small>
-                <small><a href="/password-reset">Hesabınız yok mu? Kayıt olun</a></small>
+                <small><a href="/register">Hesabınız yok mu? Kayıt olun</a></small>
             </div>
             <button class="btn" type="submit">Giriş Yap</button>
         </form>

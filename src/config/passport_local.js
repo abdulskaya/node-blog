@@ -12,7 +12,7 @@ module.exports = (passport) => {
             const user = await User.findOne({where: {
                 email: email
             }});
-            
+            console.log(!email || !passport)
             if(!user) return done(null, false, {message: 'Kullanıcı bulunamadı'});
             if(password !== user.password ) return done(null, false, {message: 'Şifre hatalı'});
             else return done(null, user);
@@ -29,12 +29,7 @@ module.exports = (passport) => {
     });
     passport.deserializeUser(async(id, done) => {
         console.log('User veritabaninda bulundu');
-        const user = await User.findOne({
-            where: {
-                id: id,
-            },
-        })
-        console.log(user)
+        const user = await User.findByPk(id);
         done(null, user);
     });
     
