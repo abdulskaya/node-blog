@@ -20,7 +20,9 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: {
-        maxAge: 60 * 60 * 1000
+        maxAge: 60 * 60 * 1000,
+        //expiration : 10 * 1000,
+        checkExpirationInterval : 10 * 100
     },
     store: seqStore,
     proxy: false, //set true if you do SSL outside of node .

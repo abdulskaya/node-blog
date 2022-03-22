@@ -24,13 +24,14 @@
   
   <div class="header">
     <div class="header-inner">
-      <a href="/" class="logo">
+      <a href="/" class="logo d-flex align-items-end">
         <img src="/media/logo.png" alt="logo.png">
+        <span class="text-white" style="margin-left: -1px;">log</span>
       </a>  
       <ul>
         <li><a href="/">Ana Sayfa</a></li>
         <% if(isAuth === true) { %> 
-          <li><a ><%- user.username %> </a></li>
+          <li><a href="/profile"><%- user.username %> </a></li>
           <li><a href="/logout">Çıkış Yap</a></li>
         <% } else if (isAuth === false){ %> 
           <li><a href="/login">Giriş Yap</a></li>

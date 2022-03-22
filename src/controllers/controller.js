@@ -7,6 +7,11 @@ const home = async (req, res) => {
     });
 }
 
+const profile = (req, res) => {
+    res.render('front/profile');
+}
+
 module.exports =  {
-    home
+    home,
+    profile
 };

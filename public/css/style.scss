@@ -198,6 +198,14 @@ div {
                     left      : 0;
                 }
             }
+            
+            .active{
+                color: #1d1d1f !important;
+                
+                .line-hover {
+                    visibility: visible !important;
+                }
+            }
         }
     }
 }
@@ -345,7 +353,7 @@ textarea{
         background-clip: text;
         -webkit-text-fill-color: transparent;
         padding-bottom: 12px;
-
+        
     }
 }
 
@@ -376,3 +384,51 @@ a{
     color: #269412;
     border: 1px solid #30ff41;
 }
+
+/* profile page styles START */
+
+.profile-section{
+    position: relative;
+    .profile{
+        position: fixed;
+        left: 0;
+        border-right: 1px solid #bababa;
+        top: 60px;
+        background: #ededed;
+        padding-bottom: 15vh;
+        width: 300px;
+        height: calc(100vh - 60px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
+        .profile-face{
+            width: 200px;
+            height: 175px;
+            overflow: hidden;
+            border-radius: 2px;
+            margin-bottom: 10px;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .user-fullname{
+            font-size: 15px;
+            font-weight: 500;
+            width: 200px;
+        }
+        .user-username{
+            width: 200px;
+            font-weight: 200;
+            font-size: 12px;
+        }
+    }
+    .profile-content{
+        margin-left: 350px;
+    }
+}
+
+/* profile page styles END */

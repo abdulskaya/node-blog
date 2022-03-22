@@ -2,7 +2,7 @@
     <div class="content-inner">
         <div class="home-top-area">
             <div class="selections">
-                <button>Trendler <div class="line-hover"></div></button>
+                <button class="active">Trendler <div class="line-hover"></div></button>
                 <button>Son Yayınlananlar <div class="line-hover"></div></button>
                 <div class="line"></div>
             </div>
@@ -74,3 +74,11 @@
         
     </div>
 </div>
+
+<script src="js/jquery-3.6.0.min.js"></script>
+<script>
+   $('.selections button').click(function(){
+        $('.selections button').removeClass('active');
+        $(this).addClass('active');
+   })
+</script>

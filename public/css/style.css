@@ -165,6 +165,12 @@ div {
   bottom: 0;
   left: 0;
 }
+.content .content-inner .home-top-area .active {
+  color: #1d1d1f !important;
+}
+.content .content-inner .home-top-area .active .line-hover {
+  visibility: visible !important;
+}
 
 .post-area {
   width: 100%;
@@ -327,5 +333,51 @@ a {
   color: #269412;
   border: 1px solid #30ff41;
 }
+
+/* profile page styles START */
+.profile-section {
+  position: relative;
+}
+.profile-section .profile {
+  position: fixed;
+  left: 0;
+  border-right: 1px solid #bababa;
+  top: 60px;
+  background: #ededed;
+  padding-bottom: 15vh;
+  width: 300px;
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.profile-section .profile .profile-face {
+  width: 200px;
+  height: 175px;
+  overflow: hidden;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+.profile-section .profile .profile-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.profile-section .profile .user-fullname {
+  font-size: 15px;
+  font-weight: 500;
+  width: 200px;
+}
+.profile-section .profile .user-username {
+  width: 200px;
+  font-weight: 200;
+  font-size: 12px;
+}
+.profile-section .profile-content {
+  margin-left: 350px;
+}
+
+/* profile page styles END */
 
 /*# sourceMappingURL=style.css.map */
