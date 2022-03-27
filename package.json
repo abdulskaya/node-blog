@@ -9,6 +9,7 @@
   "author": "Abdulsamet Kaya",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.26.1",
     "connect-flash": "^0.1.1",
     "connect-session-sequelize": "^7.1.2",
     "dotenv": "^16.0.0",
@@ -17,11 +18,15 @@
     "express-ejs-layouts": "^2.5.1",
     "express-session": "^1.17.2",
     "express-validator": "^6.14.0",
+    "form-data": "^4.0.0",
+    "fs": "^0.0.1-security",
+    "multer": "^1.4.4",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.15",
     "passport": "^0.5.2",
     "passport-local": "^1.0.0",
+    "require": "^2.4.20",
     "sequelize": "^6.17.0",
     "sequelize-cli": "^6.4.1"
   }

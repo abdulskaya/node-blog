@@ -1,0 +1,57 @@
+
+<% if (locals.validation_errors != undefined && validation_errors.length > 0 ) { %>
+    <%- include('../../partials/alert_danger_pagetop') %>
+    <% } %> 
+    <div class="modal-header">
+        <h5 class="modal-title mx-auto w-75">Gönderi Oluştur</h5>
+        <a href="/" type="button" class="btn-close" ></a>
+    </div>
+    <form action="/create-post-p" method="post" id="create_post" enctype="multipart/form-data" class="w-75 mx-auto">
+        
+        <h1>
+            <%- typeof olds[0] != 'undefined' ?  olds[0].post_title :  ''  %> 
+        </h1>
+        
+        <div class="modal-body">
+            <div class="form-floating mb-3">
+                <input name="post_title" type="text" class="form-control" id="title" placeholder="Gönderi Başlığı">
+                <label for="floatingInput">Gönderi Başlığı*</label>
+            </div>
+            <div class="input-group mb-3">
+                <input name="post_face" type="file" class="custom-file-input" id="post_face">
+                <label class="custom-file-label" for="customFile">Gönderi Resmi</label>
+            </div>
+            <div class="form-floating mb-3">
+                <textarea class="form-control" name="content" placeholder="İçerik*" id="content" style="height: 100px"></textarea>
+                <label for="floatingTextarea">İçerik*</label>
+            </div>
+            <div class="form-floating">
+                <select name="categories" id="categories" class="js-multiple-select form-control" multiple="multiple" style="width: 100% !important;" placeholder="Kategori*">
+                  
+                    <option>test1</option>
+                    <option>test2</option>
+                    </select>
+                    <label for="categories">Kategori*</label>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary text-white" id="create_post_submit">Yayınla</button>
+                    
+                </div>
+            </form>
+        </div>
+        
+        <link rel="stylesheet" href="css/select2.min.css">
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/select2.min.js"></script>
+        <script>
+            $(function() {
+                $('.js-multiple-select').select2({
+                    tags: true,
+                    tokenSeparators: [',', ' '],
+                    placeholder: 'Kategori arayın..'
+                });
+            });
+            
+            
+        </script>

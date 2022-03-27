@@ -1,15 +1,19 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('sub_categories', {
+    await queryInterface.createTable('post_categories', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
-        type: Sequelize.STRING
+      post_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'posts',
+          key: 'id',
+        },
       },
       category_id: {
         type: Sequelize.INTEGER,
@@ -17,9 +21,6 @@ module.exports = {
           model: 'categories',
           key: 'id',
         },
-      },
-      is_active: {
-        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -32,6 +33,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('sub_categories');
+    await queryInterface.dropTable('post_categories');
   }
 };

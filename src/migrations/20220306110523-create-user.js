@@ -23,6 +23,7 @@ module.exports = {
       },
       profile_image: {
         type: Sequelize.STRING,
+        defaultValue: '/avatars/user.png'
       },
       password: {
         type: Sequelize.STRING

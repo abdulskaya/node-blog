@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/sf.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css.map">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
     
@@ -31,6 +32,7 @@
       <ul>
         <li><a href="/">Ana Sayfa</a></li>
         <% if(isAuth === true) { %> 
+          <li><img width="30px" src="<%- user.profile_image %> " alt=""></li>
           <li><a href="/profile"><%- user.username %> </a></li>
           <li><a href="/logout">Çıkış Yap</a></li>
         <% } else if (isAuth === false){ %> 

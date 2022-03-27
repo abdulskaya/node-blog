@@ -2,7 +2,7 @@ const { Sequelize, DataTypes, Model } = require('sequelize');
 const sequelize = require('../config/db');
 
 class Category extends Model {}
-User.init({
+Category.init({
   title: {
     type: Sequelize.STRING
   },

@@ -23,15 +23,15 @@ const register_schema = {
                     }
                     return true
                 })
-              }
+            }
         },
     },
     password: {
         trim: true,
         custom: {
             options: (value) => {
-                if(value == '')  return Promise.reject('Şifre alanı gerekli')
-                else if(value.length < 8)  return Promise.reject('Şifre 8 karakterden küçük olamaz')
+                if(value == '')  return Promise.reject('Şifre alanı gerekli');
+                else if(value.length < 8)  return Promise.reject('Şifre 8 karakterden küçük olamaz');
                 return true
             }
         }
@@ -40,8 +40,8 @@ const register_schema = {
         trim: true,
         custom: {
             options: (value, { req }) => {
-                if(value == '')  return Promise.reject('Şifre onaylama alanı gerekli')
-                else if(req.body.password != value)  return Promise.reject('Şifreler uyuşmuyor')
+                if(value == '')  return Promise.reject('Şifre onaylama alanı gerekli');
+                else if(req.body.password != value)  return Promise.reject('Şifreler uyuşmuyor');
                 else return true
             }
         }
@@ -60,7 +60,7 @@ const register_schema = {
                     }
                 }).then(user => {
                     if (user.length > 0 && value != '@') {
-                        return Promise.reject('E-Mail zaten kayıtlı')
+                        return Promise.reject('E-Mail zaten kayıtlı');
                     }else return true
                 })
             }
@@ -69,6 +69,47 @@ const register_schema = {
     
 }
 
+const create_post_schema = {
+    post_title: {
+        trim: true,
+        custom: {
+            options: (value, { req }) => {
+                if(value == '')  return Promise.reject('Başlık alanı gerekli.');
+                if(value.length < 5)  return Promise.reject('Başlık 5 karakterden kücük olmaz.');
+                else return true
+                console.log(value);
+            }
+        }
+    },
+    post_face: {
+        custom: {
+            options: (value, { req }) => {
+                if(value == null)  return Promise.reject('Gönderi resmi alanı gerekli.');
+                return true
+            }
+        }
+    },
+    content: {
+        trim: true,
+        custom: {
+            options: (value, { req }) => {
+                if(value == '')  return Promise.reject('İçerik alanı gerekli.');
+                return true
+            }
+        }
+    },
+    categories: {
+        custom: {
+            options: (value, { req }) => {
+                if(value == null)  return Promise.reject('Kategori alanı gerekli.');
+                return true
+            }
+        }
+    }
+}
+
+
 module.exports = {
-    register_schema
+    register_schema,
+    create_post_schema
 }

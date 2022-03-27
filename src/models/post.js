@@ -2,7 +2,7 @@ const { Sequelize, DataTypes, Model } = require('sequelize');
 const sequelize = require('../config/db');
 
 class Post extends Model {}
-User.init({
+Post.init({
   title: {
     type: Sequelize.STRING
   },
@@ -12,15 +12,16 @@ User.init({
   post_face: {
     type: Sequelize.STRING
   },
-  category_id: {
-    type: Sequelize.INTEGER
-  },
   author_id: {
     type: Sequelize.INTEGER,
     references: {
       model: 'users',
       key: 'id',
     },
+  },
+  read_time: {
+    allowNull: false,
+    type: Sequelize.INTEGER // 90 dak.
   },
   is_active: {
     type: Sequelize.BOOLEAN,

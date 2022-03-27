@@ -10,10 +10,32 @@ const flash = require('connect-flash');
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const passport = require('passport')
 
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 const seqStore = new SequelizeStore({
     db: db,
 });
+
+
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+    // intercept OPTIONS method
+    if ('OPTIONS' == req.method) {
+        res.sendStatus(200);
+    } else {
+        next();
+    }
+};
+app.use(allowCrossDomain);
+
+app.use(expressLayout);
+
+app.set('view engine', 'ejs');
+
+app.use(express.static('public')); 
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -32,16 +54,6 @@ seqStore.sync();
 
 app.use(flash());
 
-app.use(express.static('public')); 
-
-app.use(expressLayout);
-
-app.use(express.urlencoded({extended: true}));
-
-app.set('views',path.resolve(__dirname,'./views'));
-
-app.set('layout', path.resolve(__dirname, 'views/front/layout'));
-
 app.use( function (req, res, next) {
     res.locals.validation_errors =  req.flash('validation_errors');
     res.locals.olds =  req.flash('olds'); 
@@ -50,16 +62,20 @@ app.use( function (req, res, next) {
     next();
 });
 
+app.set('views',path.resolve(__dirname,'./views'));
+
+app.set('layout', path.resolve(__dirname, 'views/front/layout'));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.set('view engine', 'ejs');
-
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 //app.set('views','views')
 
 // Routes
 app.use(require('./routes/routes'));
 
-
 const PORT = process.env.SERVER_PORT || 3000;
 app.listen(PORT, console.log("Server has started at port " + PORT));
+
