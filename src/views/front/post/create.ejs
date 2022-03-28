@@ -25,11 +25,16 @@
                 <textarea class="form-control" name="content" placeholder="İçerik*" id="content" style="height: 100px"></textarea>
                 <label for="floatingTextarea">İçerik*</label>
             </div>
+            <div class="form-floating mb-3">
+                <input name="read_time" type="text" class="form-control" id="read_time" placeholder="Okuma Süresi (dk)">
+                <label for="floatingInput">Okuma Süresi (dk)*</label>
+            </div>
+
             <div class="form-floating">
                 <select name="categories" id="categories" class="js-multiple-select form-control" multiple="multiple" style="width: 100% !important;" placeholder="Kategori*">
-                    
-                    <option>test1</option>
-                    <option>test2</option>
+                    <% categories.forEach(element => { %>
+                        <option><%- element.title %> </option>
+                    <% }) %>
                 </select>
                 <label for="categories">Kategori*</label>
             </div>

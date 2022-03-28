@@ -84,7 +84,7 @@ const create_post_schema = {
     post_face: {
         custom: {
             options: (value, { req }) => {
-                if(value == null)  return Promise.reject('Gönderi resmi alanı gerekli.');
+                if(value == '')  return Promise.reject('Gönderi resmi alanı gerekli.');
                 return true
             }
         }
@@ -94,6 +94,14 @@ const create_post_schema = {
         custom: {
             options: (value, { req }) => {
                 if(value == '')  return Promise.reject('İçerik alanı gerekli.');
+                return true
+            }
+        }
+    },
+    read_time: {
+        custom: {
+            options: (value, { req }) => {
+                if(value == null)  return Promise.reject('Okuma süresi alanı gerekli.');
                 return true
             }
         }
