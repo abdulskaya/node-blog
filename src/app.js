@@ -9,6 +9,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const passport = require('passport')
+const associations = require('./models/associations')
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -17,19 +18,7 @@ const seqStore = new SequelizeStore({
     db: db,
 });
 
-
-var allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-    // intercept OPTIONS method
-    if ('OPTIONS' == req.method) {
-        res.sendStatus(200);
-    } else {
-        next();
-    }
-};
-app.use(allowCrossDomain);
+associations();
 
 app.use(expressLayout);
 

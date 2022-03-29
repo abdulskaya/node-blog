@@ -13,4 +13,7 @@ if (connection.authenticate()) {
 }else {
   console.log('Db connection failed');
 }
+
+connection.sync();
+
 module.exports = connection;

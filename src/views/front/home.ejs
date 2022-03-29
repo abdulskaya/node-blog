@@ -20,7 +20,7 @@
             <% if(posts.length > 0) {%> 
                 
                 <% posts.forEach(element => { %>
-                    <a href="" class="post-type">
+                    <a href="<%- '/post/'+element.id %> " class="post-type">
                         <div class="post-face">
                             <img src="<%- element.post_face %>" alt="<%- element.post_face %>">
                         </div>

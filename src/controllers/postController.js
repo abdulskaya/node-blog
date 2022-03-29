@@ -2,6 +2,7 @@ const { validationResult } = require('express-validator');
 const Category = require('../models/category');
 const Post = require('../models/post');
 const PostCategory = require('../models/post_category');
+const { Op } = require("sequelize");
 
 const create_post = async (req, res) => {
     let categories = await Category.findAll({where: {is_active: 1}})
@@ -40,13 +41,13 @@ const create_post_p = async (req, res) => {
         } else{
             differents = (req.body.categories).filter(x => !db_categories.includes(x));
         }
-
+        
         if (typeof differents != 'undefined'){
             differents.forEach(element => {
                 Category.create({ title: element, is_active: 1});
             }); 
         }
-
+        
         const post = await Post.create({
             title:  req.body.post_title,
             post_face:  'post_faces/' + req.file.filename,
@@ -93,12 +94,25 @@ const create_post_p = async (req, res) => {
 }
 
 const post_detail = async (req, res) => {
-    const posts = await Post.findAll({where:{is_active: 1}});
+    const posts = await Post.findAll({
+        where:{
+            is_active: 1,
+            [Op.not]: [
+                { 
+                    id: req.params.id 
+                }
+            ]
+        },
+        include: 'user'
+    });
+    console.log(posts);
     const post = await Post.findOne({
         where: {
             id: req.params.id
-        }
+        },
+        include: ['user','Categories']
     })
+    
     res.render('front/post/detail', {
         post: post,
         posts: posts

@@ -12,7 +12,7 @@ const home = async (req, res) => {
             ['createdAt', 'DESC'],
         ],
     });
-
+    
     res.render('front/home',{
         user: req.user, 
         isAuth: req.isAuthenticated(),

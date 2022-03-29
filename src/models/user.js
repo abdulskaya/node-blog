@@ -1,11 +1,7 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
 const sequelize = require('../config/db');
 
-class User extends Model {
-  static associate(models) {
-    // define association here
-  }
-}
+class User extends Model {}
 User.init({
   email: {
     type: Sequelize.STRING
@@ -30,7 +26,6 @@ User.init({
   sequelize, // pass the connection instance
   modelName: 'User' // choose the model name
 });
-
 
 module.exports = User
 

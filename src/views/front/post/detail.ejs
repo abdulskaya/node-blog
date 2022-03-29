@@ -1,0 +1,66 @@
+<div class="post-content _inner">
+    <div class="post-content-inner">
+        <div class="post-title">
+            <div class="rectangle"></div>
+            <h1 class="title">
+                <%- post.title %> 
+            </h1>
+        </div>
+        
+        <div class="details-top">
+            <span class="read-time">
+                <img src="/media/book.svg" alt="book.svg">
+                <%- post.read_time %>  dak.
+            </span>
+            <div class="date">
+                <%- post.createdAt.getDate()+'.'+post.createdAt.getMonth()+'.'+post.createdAt.getFullYear() %>
+            </div>
+        </div>
+        
+        <div class="content">
+            <%- post.content %>
+        </div>
+        <hr>
+        <span class="details">
+            <%- post.createdAt.getDate()+'.'+post.createdAt.getMonth()+'.'+post.createdAt.getFullYear() %> | <%- post.createdAt.getUTCHours()+'.'+post.createdAt.getMinutes() %> 
+        </span>
+        
+        <div class="keys">
+            <% post.Categories.forEach(element => { %>
+                <a href="/category/<%- element.title %> ">#<%- element.title %> </a>
+                <% }) %>
+            </div>
+        </div>
+        <div class="right-area">
+            <div class="author-area">
+                <a href="/user/<%- post.user.username %> " class="author">
+                    <span class="title">
+                        Yazar
+                    </span>
+                    <div>
+                        <img src="/avatars/user.png" alt="">
+                    </div>
+                    <span class="name"><%- post.user.username %> </span>
+                </a>
+            </div>
+            <div class="latest-posts">
+                <span>Diğer Yazılar</span>
+                
+                <% posts.forEach(element => { %>
+                    <a href="/post/<%- element.id %> " class="post-type">
+                        <div class="post-face">
+                            <img src="/<%- element.post_face %>" alt="/<%- post.post_face %>">
+                        </div>
+                        <div>
+                            <h5 class="title">
+                                <%- element.title %> 
+                            </h5>
+                            <span class="author">
+                                <%- element.user.username %> 
+                            </span> 
+                        </div>
+                    </a>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
