@@ -120,9 +120,36 @@ const post_detail = async (req, res) => {
     });
 }
 
+const category = async (req, res) => {
+    const category = await Category.findOne({
+        where: {
+            is_active: 1,
+            title: req.params.title
+        }
+    });
+    
+    if(!category){
+        res.render('partials/404');
+    }else{
+        const posts = await Post.findAll({
+            where: {
+                is_active: 1,
+            },
+            include: [
+                { model: Category, where: { title: req.params.title } }
+            ],
+        });
+        
+        res.render('front/category/show',{
+            posts: posts,
+            title: req.params.title[0].toUpperCase() + req.params.title.slice(1)
+        });  
+    }
+}
 
 module.exports = {
     create_post,
     create_post_p,
-    post_detail
+    post_detail,
+    category
 }

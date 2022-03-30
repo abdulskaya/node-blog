@@ -1,0 +1,65 @@
+<div class="content">
+    <div class="content-inner">
+        <div class="home-top-area align-items-center">
+            <div class="category-title">
+                <h1><%- title %> </h1>
+            </div>
+
+            <div class="selections align-items-center">
+                <button>Trendler <div class="line-hover"></div></button>
+                <button class="active">Son Yayınlananlar <div class="line-hover"></div></button>
+                <div class="line"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="post-area">
+    <div class="post-area-inner">
+        <% if(posts.length > 0) {%> 
+            
+            <% posts.forEach(element => { %>
+                <a href="<%- '/post/'+element.id %> " class="post-type">
+                    <div class="post-face">
+                        <img src="../<%- element.post_face %>" alt="<%- element.post_face %>">
+                    </div>
+                    <span class="post-details">
+                        <h5 class="post-title"><%- element.title %></h5>
+                        <span class="post-description d-flex">
+                            <%= (element.content).trim().replace('<br>', '').replace(/<[^>]*>?/gm, '').substring(0,200)+'...' %>
+                        </span>
+                        <span class="post-bottom">
+                         
+                            <div class="others">
+                                <div class="date-details">
+                                    <span class="date"><%- element.createdAt.getDate()+'.'+element.createdAt.getMonth()+'.'+element.createdAt.getFullYear() %>  </span>
+                                    <span class="dot">·</span>
+                                    <span class="time"><%- element.createdAt.getUTCHours()+'.'+element.createdAt.getMinutes() %> </span>
+                                </div>
+                                <span class="read-time">
+                                    <img src="/media/book.svg" alt="book.svg">
+                                    <%- element.read_time %>  dak.
+                                </span>
+                            </div>
+                        </span>
+                        
+                    </span>
+                </a>
+                <% }) %>
+                
+                <% } %> 
+                
+            </div>
+        </div>
+        
+        <script src="js/jquery-3.6.0.min.js"></script>
+        
+        <script>
+
+            $('.selections button').click(function(){
+                $('.selections button').removeClass('active');
+                $(this).addClass('active');
+            })
+            
+        </script>
+        

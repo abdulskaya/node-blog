@@ -825,5 +825,9 @@ img.align-right {
     opacity: 1;
   }
 }
+.category-title h1 {
+  font-size: 35px;
+  font-weight: 900;
+}
 
 /*# sourceMappingURL=style.css.map */
