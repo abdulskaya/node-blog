@@ -1,6 +1,7 @@
 const { validationResult } = require('express-validator');
 const Category = require('../models/category');
 const Post = require('../models/post');
+const User = require('../models/user');
 const PostCategory = require('../models/post_category');
 const { Op } = require("sequelize");
 
@@ -103,14 +104,14 @@ const post_detail = async (req, res) => {
                 }
             ]
         },
-        include: 'user'
+        include: User
     });
     console.log(posts);
     const post = await Post.findOne({
         where: {
             id: req.params.id
         },
-        include: ['user','Categories']
+        include: [User,'Categories']
     })
     
     res.render('front/post/detail', {

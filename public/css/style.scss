@@ -782,3 +782,103 @@ img.align-right {
         
     }
 }
+
+
+._coming-soon{
+    flex-direction: column;
+    align-items: center;
+    height: calc(100vh - 63.2px);
+    background: #1d1d1d;
+    display: flex;
+    border-top: 1px solid #313131;
+    overflow: hidden;
+    justify-content: center;
+    .coming-soon-inner{
+        width: 90%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .lights{
+        display: flex;
+        width: 63vw;
+        justify-content: space-between;
+        .light-left{
+            position: relative;
+            display: flex;
+            top: -19px;
+            .lamp{
+                width: 45px;
+                transform: rotate(
+                -4deg
+                );
+            }
+            .lamp-light{
+                position: absolute;
+                width: 338px;
+                left: -90px;
+                animation: 2s light_1 infinite ;
+                animation-duration: 3s;
+                animation-delay: 2s;
+                transform: rotate(
+                -37deg
+                );
+                top: -10px;
+            }
+        }
+        .light-right{
+            transform: rotate(
+            72deg
+            );
+            position: relative;
+            display: flex;
+            top: -19px;
+            .lamp{
+                width: 45px;
+                transform: rotate(
+                -4deg
+                );
+            }
+            .lamp-light{
+                position: absolute;
+                width: 338px;
+                animation: 2s light_2 infinite ;
+                opacity: 0;
+                left: -90px;
+                animation-duration: 1s;
+                animation-delay: 1s;
+                transform: rotate(
+                -37deg
+                );
+                top: -10px;
+            }
+        }
+    }
+    h2{
+        font-size: 12vw;
+        color: #fff;
+        font-weight: 900;
+        text-transform: uppercase;
+        background: -webkit-linear-gradient(#eee, #333);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+
+@keyframes light_1{
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    21% { opacity: 0; }
+    80% { opacity: 0; }
+    99% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
+  @keyframes light_2{
+    0% { opacity: 0}
+    20% { opacity: 1}
+    100%{ opacity: 1}
+  }
+  
