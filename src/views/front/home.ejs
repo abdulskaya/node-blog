@@ -26,10 +26,11 @@
                         </div>
                         <span class="post-details">
                             <h5 class="post-title"><%- element.title %></h5>
+                            <span class="post-description d-flex">
+                                <%= (element.content).trim().replace('<br>', '').replace(/<[^>]*>?/gm, '').substring(0,200)+'...' %>
+                            </span>
                             <span class="post-bottom">
-                                <span class="post-description">
-                                    <%- element.content.trim() %>
-                                </span>
+                             
                                 <div class="others">
                                     <div class="date-details">
                                         <span class="date"><%- element.createdAt.getDate()+'.'+element.createdAt.getMonth()+'.'+element.createdAt.getFullYear() %>  </span>
